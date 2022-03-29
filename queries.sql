@@ -19,3 +19,7 @@ COMMIT;
 BEGIN;
 DELETE FROM animals;
 ROLLBACK;
+
+/* Start the Transaction */
+BEGIN;
+DELETE FROM animals WHERE date_of_birth > '2022/01/01';
