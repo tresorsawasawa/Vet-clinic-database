@@ -34,3 +34,6 @@ COMMIT;
 SELECT COUNT(*) FROM animals;
 SELECT COUNT(*) FROM animals WHERE escape_attemps = 0;
 SELECT AVG(weight_kg) FROM animals;
+SELECT id, name, escape_attemps FROM animals WHERE escape_attemps = (SELECT MAX(escape_attemps) FROM animals) AND (neutered = true OR neutered = false);
+SELECT MIN(weight_kg), MAX(weight_kg) FROM animals;
+SELECT AVG(escape_attemps) FROM animals WHERE date_of_birth  BETWEEN '1990/01/01' AND '2000/12/31';
