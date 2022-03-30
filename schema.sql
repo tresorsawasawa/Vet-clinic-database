@@ -12,12 +12,12 @@ CREATE TABLE animals(
 ALTER TABLE animals ADD species varchar(255);
 
 CREATE TABLE owners(
-  id GENERATED ALWAYS AS IDENTITY,
+  id INT GENERATED ALWAYS AS IDENTITY,
   full_name varchar(255),
   age INT NOT NULL
 );
 
 CREATE TABLE species(
-  id GENERATED ALWAYS AS IDENTITY,
+  id INT GENERATED ALWAYS AS IDENTITY,
   name varchar(255)
 );
