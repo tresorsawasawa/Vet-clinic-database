@@ -2,6 +2,7 @@
 The date is in 'YYYY-MM-DD' format
 */
 
+/*--- Insert Data into the animals table ----*/
 INSERT INTO animals( name, date_of_birth, escape_attemps, neutered, weight_kg ) VALUES('Agumon', '2020-02-03', 0, true, 10.23 );
 INSERT INTO animals( name, date_of_birth, escape_attemps, neutered, weight_kg ) VALUES('Gabumon', '2018-11-15', 2, true, 8 );
 INSERT INTO animals( name, date_of_birth, escape_attemps, neutered, weight_kg ) VALUES('Pikachu', '2021-01-07', 1, false, 15.04 );
@@ -14,6 +15,7 @@ INSERT INTO animals( name, date_of_birth, escape_attemps, neutered, weight_kg ) 
 INSERT INTO animals( name, date_of_birth, escape_attemps, neutered, weight_kg ) VALUES('Blossom', '1998-10-13', 3, true, 17 );
 INSERT INTO animals( name, date_of_birth, escape_attemps, neutered, weight_kg ) VALUES('Ditto', '2022-05-14', 4, true, 22 );
 
+/*--- Insert Data into the owners table ----*/
 INSERT INTO owners(full_name, age)
 VALUES('Sam', 34),
       ('Jennifer Orwell', 19),
@@ -22,10 +24,14 @@ VALUES('Sam', 34),
       ('Dean Winchester', 14),
       ('Jodie Whittaker', 38);
 
+/*--- Insert Data into the species table ----*/
 INSERT INTO species(name)
 VALUES('Pokemon'),
       ('Digimon');
 
+/*--- Modify the inserted animals so it includes the 'species_id' value ---*/
 ALTER TABLE animals ADD species_id varchar(255);
 UPDATE animals SET species_id = 'Digimon' WHERE name LIKE '%mon';
 UPDATE animals SET species_id = 'Pokemon' WHERE species_id IS NULL;
+
+/*---- Modify the inserted animals to include owner information 'owner_id' -----*/
