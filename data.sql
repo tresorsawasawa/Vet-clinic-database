@@ -35,3 +35,4 @@ UPDATE animals SET species_id = 'Digimon' WHERE name LIKE '%mon';
 UPDATE animals SET species_id = 'Pokemon' WHERE species_id IS NULL;
 
 /*---- Modify the inserted animals to include owner information 'owner_id' -----*/
+ALTER TABLE animals ADD owner_id varchar(255);
