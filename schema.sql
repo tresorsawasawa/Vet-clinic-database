@@ -21,3 +21,5 @@ CREATE TABLE species(
   id INT GENERATED ALWAYS AS IDENTITY,
   name varchar(255)
 );
+
+ALTER TABLE animals DROP species;
