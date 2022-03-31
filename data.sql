@@ -31,12 +31,11 @@ VALUES('Pokemon'),
       ('Digimon');
 
 /*--- Modify the inserted animals so it includes the 'species_id' value ---*/
-ALTER TABLE animals ADD species_id varchar(255);
 UPDATE animals SET species_id = 'Digimon' WHERE name LIKE '%mon';
 UPDATE animals SET species_id = 'Pokemon' WHERE species_id IS NULL;
 
 /*---- Modify the inserted animals to include owner information 'owner_id' -----*/
-ALTER TABLE animals ADD owner_id varchar(255);
+
 UPDATE animals SET owner_id = 'Sam Smith ' WHERE name = 'Agumon';
 UPDATE animals SET owner_id = 'Jennifer Orwell ' WHERE name = 'Pikachu' OR name ='Gabumon';
 UPDATE animals SET owner_id = 'Bob' WHERE name = 'Devimon' OR name = 'Plantmon';

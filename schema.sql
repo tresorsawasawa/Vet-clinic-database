@@ -15,6 +15,11 @@ ALTER TABLE animals ADD species varchar(255);
 ALTER TABLE animals ALTER COLUMN id  DROP IDENTITY IF EXISTS; /* Remove the default identity generation */
 ALTER TABLE animals ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY; /* Add always identity generation */
 
+/* Remove the 'species' column*/
+ALTER TABLE animals DROP species;
+
+
+
 /*------- CREATE THE 'owners' TABLE  -------*/
 CREATE TABLE owners(
   id INT GENERATED ALWAYS AS IDENTITY,
@@ -28,4 +33,3 @@ CREATE TABLE species(
   name varchar(255)
 );
 
-ALTER TABLE animals DROP species;
