@@ -189,3 +189,24 @@ LEFT JOIN
   species S
 ON
   Spe.species_id = S.id;
+
+/*----- QUESTION 4 ----*/
+SELECT
+  a.name,
+  vi.date_of_visit,
+  ve.name
+FROM
+  animals a
+JOIN
+  visits vi
+ON
+  vi.animals_id = a.id
+JOIN
+  vets ve
+ON
+  vi.vets_id = ve.id
+WHERE
+  ve.name = 'Stephanie Mendez'
+  AND
+    vi.date_of_visit
+    BETWEEN '2020-04-01' AND '2020-08-30';
