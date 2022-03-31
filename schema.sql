@@ -6,7 +6,62 @@ CREATE TABLE animals(
   date_of_birth date,
   escape_attemps INT NOT NULL,
   neutered boolean,
-  weight_kg decimal(5, 2),
+  weight_kg decimal(5, 2)
 );
 
 ALTER TABLE animals ADD species varchar(255);
+
+/*------- CREATE THE 'owners' TABLE  -------*/
+CREATE TABLE owners(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  full_name varchar(255),
+  age INT NOT NULL,
+  PRIMARY KEY(id)
+);
+
+/*------- CREATE THE 'species' TABLE  -------*/
+CREATE TABLE species(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  name varchar(255),
+  PRIMARY KEY(id)
+);
+
+/* Set the id as autoincremented and as PRIMARY KEY */
+ALTER TABLE animals ALTER COLUMN id  DROP IDENTITY IF EXISTS; /* Remove the default identity generator */
+ALTER TABLE animals ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY; /* Add always identity generator */
+ALTER TABLE animals ADD PRIMARY KEY (id); /* Set id as PRIMARY KEY */
+
+/* Remove the 'species' column */
+ALTER TABLE animals DROP species;
+
+/*--- Add new columns ----*/
+BEGIN;
+
+ALTER TABLE 
+  animals
+ADD
+  species_id INTEGER;
+
+ALTER TABLE 
+  animals
+ADD
+  owner_id INTEGER;
+
+/*--- Add FOREIGN KEYS ----*/
+ALTER TABLE
+  animals
+ADD CONSTRAINT
+  fk_owner
+FOREIGN KEY(owner_id)
+REFERENCES
+  owners(id);
+
+ALTER TABLE
+  animals
+ADD CONSTRAINT
+  fk_species
+FOREIGN KEY(species_id)
+REFERENCES
+  owners(id);
+
+COMMIT;

@@ -37,3 +37,98 @@ SELECT AVG(weight_kg) FROM animals;
 SELECT id, name, escape_attemps FROM animals WHERE escape_attemps = (SELECT MAX(escape_attemps) FROM animals) AND (neutered = true OR neutered = false);
 SELECT MIN(weight_kg), MAX(weight_kg) FROM animals;
 SELECT AVG(escape_attemps) FROM animals WHERE date_of_birth  BETWEEN '1990/01/01' AND '2000/12/31';
+
+/*----- Queries with JOIN -------*/
+
+/*----- QUESTION 1 ----*/
+SELECT
+  animals.id,
+  animals.name
+FROM
+  animals
+JOIN
+  owners
+ON
+  animals.owner_id = owners.id
+WHERE
+  owners.full_name = 'Melody Pond';
+
+/*----- QUESTION 2 ----*/
+SELECT
+  animals.id,
+  animals.name
+FROM
+  animals
+JOIN
+  species
+ON
+  animals.species_id =species.id
+WHERE
+  species.name = 'Pokemon';
+
+/*----- QUESTION 3 ----*/
+SELECT
+  animals.name,
+  owners.full_name
+FROM
+  owners
+LEFT JOIN
+  animals
+ON
+  owners.id = animals.owner_id;
+
+/*----- QUESTION 4 ----*/
+SELECT
+  species.name,
+  COUNT(*)
+FROM
+  animals
+JOIN
+  species
+ON
+  species.id = animals.species_id,
+GROUP BY species.name;
+
+/*----- QUESTION 5 ----*/
+SELECT
+  animals.name,
+  owners.full_name,
+  species.name
+FROM
+  animals
+JOIN
+  species
+ON
+  species.id = animals.species_id
+JOIN
+  owners
+ON
+  owners.id = animals.owner_id
+WHERE owners.full_name = 'Jennifer Orwell' AND species.name = 'Digimon';
+
+/*----- QUESTION 6 ----*/
+SELECT * 
+FROM
+  animals
+JOIN owners
+ON
+  animals.owner_id = owners.id
+WHERE
+  animals.escape_attemps = 0 AND owners.full_name = 'Dean Winchester';
+
+/*----- QUESTION 7 ----*/
+SELECT
+  owners.full_name,
+  COUNT(*)
+FROM
+  animals
+JOIN
+  owners
+ON
+  animals.owner_id = owners.id
+GROUP BY
+  owners.full_name
+ORDER BY
+  COUNT(*) DESC
+LIMIT
+  1;
