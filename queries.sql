@@ -231,4 +231,19 @@ ORDER BY
   Most_Viewed DESC
 LIMIT
   1;
-  
+
+/*----- QUESTION 6 ----*/
+SELECT
+  Ve.name AS Vest,
+  A.name AS Animal,
+  date_of_visit AS Date
+FROM
+  visits Vi
+  JOIN vets Ve ON Vi.vets_id = Ve.id
+  JOIN animals A ON Vi.animals_id = A.id
+WHERE
+  Ve.name = 'Maisy Smith'
+ORDER BY
+  Date
+LIMIT
+  1;
