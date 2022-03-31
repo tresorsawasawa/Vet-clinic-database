@@ -31,3 +31,37 @@ ALTER TABLE animals ALTER COLUMN id  DROP IDENTITY IF EXISTS; /* Remove the defa
 ALTER TABLE animals ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY; /* Add always identity generator */
 ALTER TABLE animals ADD PRIMARY KEY (id); /* Set id as PRIMARY KEY */
 
+/* Remove the 'species' column */
+ALTER TABLE animals DROP species;
+
+/*--- Add new columns ----*/
+BEGIN;
+
+ALTER TABLE 
+  animals
+ADD
+  species_id INTEGER;
+
+ALTER TABLE 
+  animals
+ADD
+  owner_id INTEGER;
+
+/*--- Add FOREIGN KEYS ----*/
+ALTER TABLE
+  animals
+ADD CONSTRAINT
+  fk_owner
+FOREIGN KEY(owner_id)
+REFERENCES
+  owners(id);
+
+ALTER TABLE
+  animals
+ADD CONSTRAINT
+  fk_species
+FOREIGN KEY(species_id)
+REFERENCES
+  owners(id);
+
+COMMIT;
