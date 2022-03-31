@@ -137,5 +137,24 @@ LIMIT
 
 /*--- Queries  for 3rd milestone ----*/
 
-/*----- QUESTION 7 ----*/
-SELECT FROM animals
+/*----- QUESTION 1 ----*/
+SELECT
+  vets.name,
+  animals.name,
+  date_of_visit
+FROM
+  animals
+JOIN
+  visits
+ON
+  visits.animals_id = animals.id
+JOIN
+  vets
+ON
+  visits.vets_id = vets.id
+WHERE
+  vets.name = 'William Tatcher'
+ORDER BY
+  date_of_visit DESC
+LIMIT
+  1;
