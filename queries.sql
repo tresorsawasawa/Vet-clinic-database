@@ -247,3 +247,24 @@ ORDER BY
   Date
 LIMIT
   1;
+
+SELECT
+  A.name AS Animals,
+  A.date_of_birth AS "Date of Birth",
+  A.escape_attemps AS Escapes,
+  A.neutered AS Neutered,
+  A.weight_kg AS Weigth,
+  S.name AS species,
+  Ve.name AS "Vet name",
+  Ve.age AS "Vet age",
+  Ve.date_of_graduation AS "Date of vet graduation",
+  date_of_visit
+FROM
+  visits Vi
+  JOIN vets Ve ON Vi.vets_id = Ve.id
+  JOIN animals A ON Vi.animals_id = A.id
+  JOIN species S ON A.species_id = S.id
+ORDER BY
+  date_of_visit DESC
+LIMIT
+  1;
