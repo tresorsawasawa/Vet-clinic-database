@@ -11,6 +11,10 @@ CREATE TABLE animals(
 
 ALTER TABLE animals ADD species varchar(255);
 
+/* Set the id as autoincremented and PRIMARY KEY */
+ALTER TABLE animals ALTER COLUMN id  DROP IDENTITY IF EXISTS; /* Remove the default identity generation */
+ALTER TABLE animals ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY; /* Add always identity generation */
+
 CREATE TABLE owners(
   id INT GENERATED ALWAYS AS IDENTITY,
   full_name varchar(255),
