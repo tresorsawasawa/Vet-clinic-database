@@ -1,5 +1,7 @@
 /*Queries that provide answers to the questions from all projects.*/
 
+/*---- Queries for 1st milestone---*/
+
 SELECT * FROM animals WHERE name LIKE '%mon';
 SELECT name FROM animals WHERE date_of_birth  BETWEEN '2016/01/01' AND '2019/12/31';
 SELECT name  FROM animals WHERE neutered = true  AND escape_attemps < 3;
@@ -38,7 +40,7 @@ SELECT id, name, escape_attemps FROM animals WHERE escape_attemps = (SELECT MAX(
 SELECT MIN(weight_kg), MAX(weight_kg) FROM animals;
 SELECT AVG(escape_attemps) FROM animals WHERE date_of_birth  BETWEEN '1990/01/01' AND '2000/12/31';
 
-/*----- Queries with JOIN -------*/
+/*----- Queries with JOIN  for 2nd milestone -------*/
 
 /*----- QUESTION 1 ----*/
 SELECT
@@ -132,3 +134,8 @@ ORDER BY
   COUNT(*) DESC
 LIMIT
   1;
+
+/*--- Queries  for 3rd milestone ----*/
+
+/*----- QUESTION 7 ----*/
+SELECT FROM animals
