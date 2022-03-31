@@ -174,3 +174,18 @@ ON
   visits.vets_id = vets.id
 WHERE
   vets.name = 'Stephanie Mendez';
+
+/*----- QUESTION 3 ----*/
+SELECT
+  ve.name AS Vet_Name,
+  S.name AS Speciality
+FROM
+  vets ve
+LEFT JOIN
+  specializations Spe
+ON
+  ve.id = Spe.vets_id
+LEFT JOIN
+  species S
+ON
+  Spe.species_id = S.id;
