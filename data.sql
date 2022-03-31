@@ -31,8 +31,23 @@ VALUES('Pokemon'),
       ('Digimon');
 
 /*--- Modify the inserted animals so it includes the 'species_id' value ---*/
-UPDATE animals SET species_id = 'Digimon' WHERE name LIKE '%mon';
-UPDATE animals SET species_id = 'Pokemon' WHERE species_id IS NULL;
+BEGIN;
+UPDATE
+  animals
+SET
+  species_id = 2
+WHERE
+  name LIKE '%mon';
+COMMIT;
+
+BEGIN;
+UPDATE
+  animals
+SET
+  species_id = 1
+WHERE
+  species_id IS NULL;
+COMMIT;
 
 /*---- Modify the inserted animals to include owner information 'owner_id' -----*/
 
