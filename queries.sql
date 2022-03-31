@@ -210,3 +210,25 @@ WHERE
   AND
     vi.date_of_visit
     BETWEEN '2020-04-01' AND '2020-08-30';
+
+/*----- QUESTION 5 ----*/
+SELECT
+  A.name AS Animals,
+  COUNT(A.name) AS Most_Viewed
+FROM
+  animals A
+JOIN
+  visits Vi
+ON 
+  Vi.animals_id = A.id 
+JOIN
+  vets Ve
+ON
+  Vi.vets_id = Ve.id
+GROUP BY
+  A.name
+ORDER BY
+  Most_Viewed DESC
+LIMIT
+  1;
+  
