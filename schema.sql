@@ -26,3 +26,8 @@ CREATE TABLE species(
   PRIMARY KEY(id)
 );
 
+/* Set the id as autoincremented and as PRIMARY KEY */
+ALTER TABLE animals ALTER COLUMN id  DROP IDENTITY IF EXISTS; /* Remove the default identity generator */
+ALTER TABLE animals ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY; /* Add always identity generator */
+ALTER TABLE animals ADD PRIMARY KEY (id); /* Set id as PRIMARY KEY */
+
