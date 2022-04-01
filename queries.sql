@@ -1,5 +1,7 @@
 /*Queries that provide answers to the questions from all projects.*/
 
+/*---- Queries for 1st milestone---*/
+
 SELECT * FROM animals WHERE name LIKE '%mon';
 SELECT name FROM animals WHERE date_of_birth  BETWEEN '2016/01/01' AND '2019/12/31';
 SELECT name  FROM animals WHERE neutered = true  AND escape_attemps < 3;
@@ -38,7 +40,7 @@ SELECT id, name, escape_attemps FROM animals WHERE escape_attemps = (SELECT MAX(
 SELECT MIN(weight_kg), MAX(weight_kg) FROM animals;
 SELECT AVG(escape_attemps) FROM animals WHERE date_of_birth  BETWEEN '1990/01/01' AND '2000/12/31';
 
-/*----- Queries with JOIN -------*/
+/*----- Queries with JOIN  for 2nd milestone -------*/
 
 /*----- QUESTION 1 ----*/
 SELECT
@@ -132,3 +134,176 @@ ORDER BY
   COUNT(*) DESC
 LIMIT
   1;
+
+/*--- Queries  for 3rd milestone ----*/
+
+/*----- QUESTION 1 ----*/
+SELECT
+  vets.name,
+  animals.name,
+  date_of_visit
+FROM
+  animals
+JOIN
+  visits
+ON
+  visits.animals_id = animals.id
+JOIN
+  vets
+ON
+  visits.vets_id = vets.id
+WHERE
+  vets.name = 'William Tatcher'
+ORDER BY
+  date_of_visit DESC
+LIMIT
+  1;
+
+/*----- QUESTION 2 ----*/
+SELECT
+  COUNT(DISTINCT animals.name)
+FROM
+  visits
+JOIN
+  animals
+ON
+  visits.animals_id = animals.id
+JOIN
+  vets
+ON
+  visits.vets_id = vets.id
+WHERE
+  vets.name = 'Stephanie Mendez';
+
+/*----- QUESTION 3 ----*/
+SELECT
+  ve.name AS Vet_Name,
+  S.name AS Speciality
+FROM
+  vets ve
+LEFT JOIN
+  specializations Spe
+ON
+  ve.id = Spe.vets_id
+LEFT JOIN
+  species S
+ON
+  Spe.species_id = S.id;
+
+/*----- QUESTION 4 ----*/
+SELECT
+  a.name,
+  vi.date_of_visit,
+  ve.name
+FROM
+  animals a
+JOIN
+  visits vi
+ON
+  vi.animals_id = a.id
+JOIN
+  vets ve
+ON
+  vi.vets_id = ve.id
+WHERE
+  ve.name = 'Stephanie Mendez'
+  AND
+    vi.date_of_visit
+    BETWEEN '2020-04-01' AND '2020-08-30';
+
+/*----- QUESTION 5 ----*/
+SELECT
+  A.name AS Animals,
+  COUNT(A.name) AS Most_Viewed
+FROM
+  animals A
+JOIN
+  visits Vi
+ON 
+  Vi.animals_id = A.id 
+JOIN
+  vets Ve
+ON
+  Vi.vets_id = Ve.id
+GROUP BY
+  A.name
+ORDER BY
+  Most_Viewed DESC
+LIMIT
+  1;
+
+/*----- QUESTION 6 ----*/
+SELECT
+  Ve.name AS Vest,
+  A.name AS Animal,
+  date_of_visit AS Date
+FROM
+  visits Vi
+  JOIN vets Ve ON Vi.vets_id = Ve.id
+  JOIN animals A ON Vi.animals_id = A.id
+WHERE
+  Ve.name = 'Maisy Smith'
+ORDER BY
+  Date
+LIMIT
+  1;
+
+/*----- QUESTION 7 ----*/
+SELECT
+  A.name AS Animals,
+  A.date_of_birth AS "Date of Birth",
+  A.escape_attemps AS Escapes,
+  A.neutered AS Neutered,
+  A.weight_kg AS Weigth,
+  S.name AS species,
+  Ve.name AS "Vet name",
+  Ve.age AS "Vet age",
+  Ve.date_of_graduation AS "Date of vet graduation",
+  date_of_visit
+FROM
+  visits Vi
+  JOIN animals A ON Vi.animals_id = A.id
+  JOIN species S ON A.species_id = S.id
+ORDER BY
+  date_of_visit DESC
+LIMIT
+  1;
+
+/*----- QUESTION 8 ----*/
+SELECT
+  COUNT(sp.name),
+  sp.name
+FROM
+  visits v
+JOIN 
+  animals a
+ON 
+  v.animals_id = a.id
+JOIN 
+  species sp
+ON 
+  a.species_id = sp.id
+JOIN 
+  vets vt
+ON 
+  v.vets_id = vt.id
+WHERE
+  vets_id = 2
+GROUP BY(sp.name)
+limit 1;
+
+
+SELECT
+  COUNT(*) AS species
+FROM
+  visits v
+FULL OUTER JOIN
+  vets vt
+ON
+  v.vets_id = vt.id
+FULL OUTER JOIN
+  specializations s
+ON
+  s.vets_id = vt.id
+WHERE
+  species_id IS NULL;
