@@ -248,6 +248,7 @@ ORDER BY
 LIMIT
   1;
 
+/*----- QUESTION 7 ----*/
 SELECT
   A.name AS Animals,
   A.date_of_birth AS "Date of Birth",
@@ -261,10 +262,32 @@ SELECT
   date_of_visit
 FROM
   visits Vi
-  JOIN vets Ve ON Vi.vets_id = Ve.id
   JOIN animals A ON Vi.animals_id = A.id
   JOIN species S ON A.species_id = S.id
 ORDER BY
   date_of_visit DESC
 LIMIT
   1;
+
+/*----- QUESTION 8 ----*/
+SELECT
+  COUNT(sp.name),
+  sp.name
+FROM
+  visits v
+JOIN 
+  animals a
+ON 
+  v.animals_id = a.id
+JOIN 
+  species sp
+ON 
+  a.species_id = sp.id
+JOIN 
+  vets vt
+ON 
+  v.vets_id = vt.id
+WHERE
+  vets_id = 2
+GROUP BY(sp.name)
+limit 1;
