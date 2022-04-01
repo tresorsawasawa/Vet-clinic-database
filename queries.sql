@@ -291,3 +291,19 @@ WHERE
   vets_id = 2
 GROUP BY(sp.name)
 limit 1;
+
+
+SELECT
+  COUNT(*) AS species
+FROM
+  visits v
+FULL OUTER JOIN
+  vets vt
+ON
+  v.vets_id = vt.id
+FULL OUTER JOIN
+  specializations s
+ON
+  s.vets_id = vt.id
+WHERE
+  species_id IS NULL;
