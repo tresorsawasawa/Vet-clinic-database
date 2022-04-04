@@ -66,7 +66,7 @@ VALUES('William Tatcher', 45, '2000-04-23'),
       ('Jack Harkness', 38, '2008-06-08');
 
 /* Insert data in the 'visits' table*/
-INSERT INTO specializations(vets_id, species_id)
+INSERT INTO visits(vets_id, species_id)
 VALUES(1,1),
       (3,2),
       (4,2);
