@@ -92,3 +92,15 @@ CREATE TABLE visits(
   FOREIGN KEY (animals_id) REFERENCES animals (id) ON DELETE RESTRICT ON UPDATE CASCADE,
 	FOREIGN KEY (vets_id) REFERENCES vets (id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
+
+/*-- Add an email column to your owners table ---*/
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
+-- Create INDEXES in the 'visits' table
+CREATE INDEX visits_animals_id_asc ON visits(animals_id ASC);
+CREATE INDEX visits_vets_id_asc ON visits(vets_id ASC);
+
+
+-- Create INDEXES in the 'owners' table
+CREATE INDEX owners_email_asc ON owners(email ASC);
+CREATE INDEX owners_name_asc ON owners(full_name ASC);
