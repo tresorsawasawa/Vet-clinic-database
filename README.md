@@ -29,6 +29,11 @@ Before starting the steps below, be sure you have [Git](https://www.linode.com/d
 - Twitter: [@tresorsawasawa](https://twitter.com/TresorSawasawa)
 - LinkedIn: [Trésor Sawasawa](https://www.linkedin.com/in/tresor-sawasawa/)
 
+👤 **Vahan Khachvankian**
+
+- GitHub: [@githubhandle](https://github.com/Gegardus)
+- Twitter: [@twitterhandle](https://twitter.com/Gegardus)
+
 ## :handshake: Contributing
 
 Feel free to check the [issues page](https://github.com/tresorsawasawa/Vet-clinic-database/issues)
