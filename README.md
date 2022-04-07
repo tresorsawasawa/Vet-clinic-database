@@ -14,6 +14,7 @@ This repository includes files with plain SQL that can be used to recreate a dat
 This project is built with:
 
 - SQL
+
 ## Getting Started
 
 To get the content of this project locally you need to run these commands in your terminal.
