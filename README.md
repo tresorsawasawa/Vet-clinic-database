@@ -3,6 +3,9 @@
 
 > "Vet Clinic Database" is a project where I use a relational database to create the initial data structure for a vet clinic that includes a table to store animals' information, insert some data into it, and query it.
 
+## Diagram
+
+![vet_clinic_screenshot](./vet_clinic_Diagram.png)
 ## Details
 
 This repository includes files with plain SQL that can be used to recreate a database:
